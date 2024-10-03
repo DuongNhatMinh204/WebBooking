@@ -192,7 +192,7 @@ header .bar a:hover{
 table {
     width: 50%;
     border-collapse: collapse;
-    style="display: inline-block;
+    display: inline-block
 }
 table, th, td {
     border: 1px solid black;
