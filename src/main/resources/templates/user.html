@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User</title>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<header>
+  <a href="#" class="logo"><span>Future</span>Wonders</a>
+  <nav class="bar">
+    <a href="./home.html">Home</a>
+    <a href="./booking.html">Booking</a>
+    <a href="./trending.html">Trending</a>
+    <a href="./news.html">News</a>
+    <a href="./package.html">Packages</a>
+    <a href="./services.html">Services</a>
+    <a href="./gallery.html">Gallery</a>
+    <a href="./review.html">Review</a>
+    <a href="./contact.html">Contact</a>
+    <a href="./plan-trip.html">Plan-Trip</a>
+  </nav>
+  <div class="icons">
+    <a href=""><i class="fas fa-search" id="search-btn"></i></a>
+    <a href="" ><i class="fas fa-user" id="login-btn" style="color: #29b862;"></i></a>
+  </div>
+</header>
+<div class="video-container">
+  <video src="images/waves.mp4" id="video-slider" loop autoplay muted ></video>
+</div>
+<form id="sign-in-form">
+  <table>
+    <tr>
+      <td><button type="button" class="indam">SignIn</button></td>
+      <td><button type="button" id="sign-up-button">SignUp</button></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="text" placeholder="Enter your name : "></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="tel" placeholder="Enter your telephone : "></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="password" placeholder="Enter your password"></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Submit"></td>
+      <td><input type="submit" value="Forgot password"></td>
+    </tr>
+  </table>
+</form>
+
+<form id="sign-up-form" class="hidden">
+  <table>
+    <tr>
+      <td><button type="button" >SignIn</button></td>
+      <td><button type="button" id="sign-up-button" class="indam">SignUp</button></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="text" placeholder="Enter your name : "></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="email" placeholder="Enter your email : "></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="tel" placeholder="Enter your telephone : "></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="password" placeholder="Create your password"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="password" placeholder="Confirm your password"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><input type="submit" value="Sign Up"></td>
+    </tr>
+  </table>
+</form>
+
+<script src="/js/user.js"></script>
+</body>
+</html>
