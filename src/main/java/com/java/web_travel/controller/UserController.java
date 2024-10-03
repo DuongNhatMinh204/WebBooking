@@ -18,7 +18,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody SecurityProperties.User user) {
+    public ResponseEntity<String> register(@RequestBody UserEntity user) {
         userService.register(user);
         return ResponseEntity.ok("Registration successful");
     }

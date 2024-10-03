@@ -17,13 +17,13 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public SecurityProperties.User register(UserEntity user) {
+    public UserEntity register(UserEntity user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
-    public SecurityProperties.User login(String username, String password) {
-        Optional<SecurityProperties.User> user = userRepository.findByUsername(username);
+    public UserEntity login(String username, String password) {
+        Optional<UserEntity> user = userRepository.findByUsername(username);
         if (user.isPresent() && passwordEncoder.matches(password, user.get().getPassword())) {
             return user.get();
         }
