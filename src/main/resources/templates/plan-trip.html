@@ -3,57 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plan-Trip</title>
+  <title>Flight Booking Information</title>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="/css/plan-trip.css">
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 18px;
+      text-align: left;
+    }
+    table th, table td {
+      padding: 12px;
+      border: 1px solid #ddd;
+    }
+    table th {
+      background-color: #f2f2f2;
+    }
+    .btn-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .btn {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn.cancel {
+      background-color: #f44336;
+      color: white;
+    }
+    .btn.pay {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
 </head>
 <body>
 <header>
   <a href="#" class="logo"><span>Future</span>Wonders</a>
   <nav class="bar">
-    <a href="./home.html">Home</a>
-    <a href="./booking.html">Booking</a>
-    <a href="./trending.html">Trending</a>
-    <a href="./news.html">News</a>
-    <a href="./package.html">Packages</a>
-    <a href="./services.html">Services</a>
-    <a href="./gallery.html">Gallery</a>
-    <a href="./review.html">Review</a>
-    <a href="./contact.html">Contact</a>
-    <a href="./plan-trip.html" class="indam">Plan-Trip</a>
+    <a href="home">Home</a>
+    <a href="booking">Booking</a>
+    <a href="trending">Trending</a>
+    <a href="news">News</a>
+    <a href="package">Packages</a>
+    <a href="services">Services</a>
+    <a href="gallery">Gallery</a>
+    <a href="review">Review</a>
+    <a href="contact">Contact</a>
+    <a href="plan-trip" class="indam">Pay</a>
   </nav>
   <div class="icons">
     <a href=""><i class="fas fa-search" id="search-btn"></i></a>
-    <a href="user.html"><i class="fas fa-user" id="login-btn"></i></a>
+    <a href="user"><i class="fas fa-user" id="login-btn"></i></a>
   </div>
 </header>
+
 <h1 class="heading">
-  <span>p</span>
+  <span>f</span>
   <span>l</span>
-  <span>a</span>
-  <span>n</span>
-  <span>-</span>
-  <span>t</span>
-  <span>r</span>
   <span>i</span>
-  <span>p</span>
+  <span>g</span>
+  <span>h</span>
+  <span>t</span>
+  <span>-</span>
+  <span>b</span>
+  <span>o</span>
+  <span>o</span>
+  <span>k</span>
+  <span>i</span>
+  <span>n</span>
+  <span>g</span>
 </h1>
-<div class="video-container">
-  <video src="images/clouds.mp4" id="video-slider" loop autoplay  muted></video>
+
+<!-- Flight Booking Information Table -->
+<div class="flight-info">
+  <h2>Thông Tin Chuyến Bay Đã Đặt</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Select</th>
+      <th>Mã Chuyến Đi</th>
+      <th>Họ Tên Người Đặt</th>
+      <th>Địa Điểm</th>
+      <th>Số Người Đi</th>
+      <th>Check-in Time</th>
+      <th>Check-out Time</th>
+      <th>Mã Chuyến Bay</th>
+      <th>Ngày Bay</th>
+      <th>Tình Trạng Thanh Toán</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><input type="checkbox"></td>
+      <td>12345</td>
+      <td>Nguyễn Văn A</td>
+      <td>Hà Nội</td>
+      <td>4</td>
+      <td>2024-10-15</td>
+      <td>2024-10-20</td>
+      <td>VN678</td>
+      <td>2024-10-15</td>
+      <td>Chưa Thanh Toán</td>
+    </tr>
+    <!-- Bạn có thể thêm các dòng khác tại đây -->
+    </tbody>
+  </table>
+
+  <!-- Buttons: Cancel Trip and Pay Now -->
+  <div class="btn-container">
+    <button class="btn cancel">Hủy Chuyến</button>
+    <button class="btn pay">Thanh Toán</button>
+  </div>
 </div>
-<div class="plan">
-  <h2>Create Your Plan !</h2>
-  <p>Chúng Tôi Sẽ Giúp Bạn Tạo Chuyến Đi Hoàn Hảo</p>
-  <form action="" class="form">
-    <label for="diadiem">Nhập địa điểm mong muốn : </label>
-    <input type="text" name="" id="diadiem" placeholder="Nhập địa điểm mong muốn : ">
-    <label for="date">Nhập ngày khời hành :</label>
-    <input type="date" id="date">
-    <label for="tien">Ngân Sách Ước Tính : </label>
-    <input type="number" name="" id="tien">
-    <input type="submit" value="Create Plan Now !">
-  </form>
-</div>
+
 </body>
 </html>
