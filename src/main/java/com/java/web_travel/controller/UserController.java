@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/auth")
 public class UserController {
@@ -18,14 +21,27 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody UserEntity user) {
+    public ResponseEntity<Map<String, Object>> register(@RequestBody UserEntity user) {
         userService.register(user);
-        return ResponseEntity.ok("Registration successful");
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", true);
+        response.put("message", "Registration successful");
+        return ResponseEntity.ok(response);
     }
 
+
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UserEntity user) {
-        UserEntity authenticatedUser = userService.login(user.getUsername(), user.getPassword());
-        return ResponseEntity.ok("Login successful");
+    public ResponseEntity<Map<String, Object>> login(@RequestBody UserEntity user) {
+        UserEntity authenticatedUser = userService.login(user.getTelephone(), user.getPassword());
+        Map<String, Object> response = new HashMap<>();
+        if (authenticatedUser != null) {
+            response.put("success", true);
+            response.put("message", "Login successful");
+        } else {
+            response.put("success", false);
+            response.put("message", "Invalid telephone or password");
+        }
+        return ResponseEntity.ok(response);
     }
+
 }

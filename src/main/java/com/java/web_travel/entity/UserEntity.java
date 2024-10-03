@@ -11,10 +11,19 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
+    private String telephone; // Change from username to telephone
     private String password;
     private String email;
     private String roles;
+
+    // Getters and setters
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
 
     public Long getId() {
         return id;
@@ -22,14 +31,6 @@ public class UserEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -55,5 +56,4 @@ public class UserEntity {
     public void setRoles(String roles) {
         this.roles = roles;
     }
-
 }

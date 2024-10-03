@@ -18,13 +18,13 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public UserEntity register(UserEntity user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         return userRepository.save(user);
     }
 
-    public UserEntity login(String username, String password) {
-        Optional<UserEntity> user = userRepository.findByUsername(username);
-        if (user.isPresent() && passwordEncoder.matches(password, user.get().getPassword())) {
+    public UserEntity login(String telephone, String password) {
+        Optional<UserEntity> user = userRepository.findByTelephone(telephone);
+        if (user.isPresent() && password.equals(user.get().getPassword())) { // So sánh mật khẩu thường
             return user.get();
         }
         throw new RuntimeException("Invalid credentials");
