@@ -118,10 +118,19 @@
 
   <!-- Buttons: Cancel Trip and Pay Now -->
   <div class="btn-container">
-    <button class="btn cancel">Hủy Chuyến</button>
-    <button class="btn pay">Thanh Toán</button>
+    <button class="btn cancel" id = "cancel-btn">Hủy Chuyến</button>
+    <button class="btn pay" id = "pay-btn">Thanh Toán</button>
   </div>
 </div>
 
 </body>
+<script>
+  document.getElementById('cancel-btn').addEventListener('click', function() {
+    alert('Hủy chuyến thành công!');
+  });
+
+  document.getElementById('pay-btn').addEventListener('click', function() {
+    alert('Thanh toán thành công!');
+  });
+</script>
 </html>

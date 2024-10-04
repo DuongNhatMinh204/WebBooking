@@ -42,15 +42,23 @@ document.getElementById("sign-in-form").addEventListener("submit", function(even
     })
         .then(response => response.json()) // Chờ phản hồi từ server
         .then(data => {
-            // Xử lý phản hồi từ backend
             if (data.success) {
-                // Chuyển hướng nếu đăng nhập thành công
-                window.location.href = "http://localhost:8080/home"; // Ví dụ chuyển đến trang chính
+                // Chuyển hướng đến URL mà server trả về
+                window.location.href = data.redirectUrl;
             } else {
-                alert("Không đăng nhập được"); // Hiển thị thông báo lỗi
+                alert("Không đăng nhập được");
             }
         })
-        .catch(error => console.error("Error:", error)); // Xử lý lỗi nếu có
+        // .then(data => {
+        //     // Xử lý phản hồi từ backend
+        //     if (data.success) {
+        //         // Chuyển hướng nếu đăng nhập thành công
+        //         window.location.href = "http://localhost:8080/home"; // Ví dụ chuyển đến trang chính
+        //     } else {
+        //         alert("Không đăng nhập được"); // Hiển thị thông báo lỗi
+        //     }
+        // })
+        // .catch(error => console.error("Error:", error)); // Xử lý lỗi nếu có
 });
 
 // Lắng nghe sự kiện gửi form Đăng Ký
