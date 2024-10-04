@@ -18,7 +18,13 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public UserEntity register(UserEntity user) {
-
+        if (userRepository.findByTelephone(user.getTelephone()).isPresent()) {
+            throw new RuntimeException("Số điện thoại đã tồn tại. Vui lòng chọn số điện thoại khác.");
+        }
+        // Kiểm tra độ dài mật khẩu
+        if (user.getPassword().length() < 8) {
+            throw new RuntimeException("Mật khẩu phải có ít nhất 8 ký tự.");
+        }
         return userRepository.save(user);
     }
 

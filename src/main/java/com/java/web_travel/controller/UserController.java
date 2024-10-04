@@ -20,17 +20,30 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/register")
-    public ResponseEntity<Map<String, Object>> register(@RequestBody UserEntity user) {
+//    @PostMapping("/register")
+//    public ResponseEntity<Map<String, Object>> register(@RequestBody UserEntity user) {
+//        userService.register(user);
+//        Map<String, Object> response = new HashMap<>();
+//        response.put("success", true);
+//        response.put("message", "Registration successful");
+//        return ResponseEntity.ok(response);
+//    }
+@PostMapping("/register")
+public ResponseEntity<Map<String, Object>> register(@RequestBody UserEntity user) {
+    Map<String, Object> response = new HashMap<>();
+    try {
         userService.register(user);
-        Map<String, Object> response = new HashMap<>();
         response.put("success", true);
-        response.put("message", "Registration successful");
-        return ResponseEntity.ok(response);
+        response.put("message", "Đăng ký thành công");
+    } catch (RuntimeException e) {
+        response.put("success", false);
+        response.put("message", e.getMessage());
     }
+    return ResponseEntity.ok(response);
+}
 
 
-//    @PostMapping("/login")
+    //    @PostMapping("/login")
 //    public ResponseEntity<Map<String, Object>> login(@RequestBody UserEntity user) {
 //        UserEntity authenticatedUser = userService.login(user.getTelephone(), user.getPassword());
 //        Map<String, Object> response = new HashMap<>();

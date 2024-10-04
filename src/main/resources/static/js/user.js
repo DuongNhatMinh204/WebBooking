@@ -61,40 +61,80 @@ document.getElementById("sign-in-form").addEventListener("submit", function(even
         // .catch(error => console.error("Error:", error)); // Xử lý lỗi nếu có
 });
 
+// // Lắng nghe sự kiện gửi form Đăng Ký
+// document.getElementById("sign-up-form").addEventListener("submit", function(event) {
+//     // Ngăn chặn reload trang
+//     event.preventDefault();
+//
+//     // Lấy dữ liệu từ form
+//     var formData = new FormData(this);
+//     var data = {
+//         name: formData.get("name"), // Lấy tên từ trường nhập
+//         email: formData.get("email"), // Lấy email từ trường nhập
+//         telephone: formData.get("telephone"), // Lấy số điện thoại từ trường nhập
+//         password: formData.get("password"), // Lấy mật khẩu từ trường nhập
+//         confirmPassword: formData.get("confirmPassword") // Lấy xác nhận mật khẩu từ trường nhập
+//     };
+//
+//     // Gửi yêu cầu đăng ký đến backend
+//     fetch("/api/auth/register", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json" // Định dạng nội dung là JSON
+//         },
+//         body: JSON.stringify(data) // Chuyển đổi dữ liệu thành chuỗi JSON
+//     })
+//         .then(response => response.json()) // Chờ phản hồi từ server
+//         .then(data => {
+//             // Xử lý phản hồi từ backend
+//             if (data.success) {
+//                 alert("Đăng ký thành công!"); // Thông báo thành công
+//                 // Hiển thị lại form Đăng Nhập
+//                 document.getElementById("sign-in-form").classList.remove("hidden");
+//                 document.getElementById("sign-up-form").classList.add("hidden");
+//             } else {
+//                 alert("Sai"); // Hiển thị thông báo lỗi
+//             }
+//         })
+//         .catch(error => console.error("Error:", error)); // Xử lý lỗi nếu có
+// });
 // Lắng nghe sự kiện gửi form Đăng Ký
 document.getElementById("sign-up-form").addEventListener("submit", function(event) {
-    // Ngăn chặn reload trang
     event.preventDefault();
 
-    // Lấy dữ liệu từ form
     var formData = new FormData(this);
+    var password = formData.get("password");
+
+    // Kiểm tra độ dài mật khẩu trước khi gửi đến server
+    if (password.length < 8) {
+        alert("Mật khẩu phải có ít nhất 8 ký tự.");
+        return; // Ngăn không gửi form nếu mật khẩu quá ngắn
+    }
+
     var data = {
-        name: formData.get("name"), // Lấy tên từ trường nhập
-        email: formData.get("email"), // Lấy email từ trường nhập
-        telephone: formData.get("telephone"), // Lấy số điện thoại từ trường nhập
-        password: formData.get("password"), // Lấy mật khẩu từ trường nhập
-        confirmPassword: formData.get("confirmPassword") // Lấy xác nhận mật khẩu từ trường nhập
+        name: formData.get("name"),
+        email: formData.get("email"),
+        telephone: formData.get("telephone"),
+        password: password,
+        confirmPassword: formData.get("confirmPassword")
     };
 
-    // Gửi yêu cầu đăng ký đến backend
     fetch("/api/auth/register", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json" // Định dạng nội dung là JSON
+            "Content-Type": "application/json"
         },
-        body: JSON.stringify(data) // Chuyển đổi dữ liệu thành chuỗi JSON
+        body: JSON.stringify(data)
     })
-        .then(response => response.json()) // Chờ phản hồi từ server
+        .then(response => response.json())
         .then(data => {
-            // Xử lý phản hồi từ backend
             if (data.success) {
-                alert("Đăng ký thành công!"); // Thông báo thành công
-                // Hiển thị lại form Đăng Nhập
+                alert("Đăng ký thành công!");
                 document.getElementById("sign-in-form").classList.remove("hidden");
                 document.getElementById("sign-up-form").classList.add("hidden");
             } else {
-                alert("Sai"); // Hiển thị thông báo lỗi
+                alert(data.message);
             }
         })
-        .catch(error => console.error("Error:", error)); // Xử lý lỗi nếu có
+        .catch(error => console.error("Error:", error));
 });
