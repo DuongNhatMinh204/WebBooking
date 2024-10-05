@@ -43,29 +43,30 @@
 </h1>
 <div class="booking">
     <img src="images/igeat.jpg" alt="">
-    <form action="flight">
+<!--    // <form action="flight">-->
+    <form action="/booking/create" method="post">
         <div class="inputBox">
             <h3>Palace</h3>
-            <input type="text" placeholder="palace name ">
+            <input type="text" name="palaceName" placeholder="palace name ">
         </div>
         <div class="inputBox">
             <h3>How many people</h3>
-            <input type="text" placeholder="number of people">
+            <input type="text" name ="numberOfPeople" placeholder="number of people">
         </div>
         <div class="inputBox">
             <h3>Checkin Time</h3>
-            <input type="date" >
+            <input type="date" name="checkinTime" >
         </div>
         <div class="inputBox">
             <h3>Check Out Time</h3>
-            <input type="date">
+            <input type="date" name="checkoutTime">
         </div>
         <div class="inputBox">
             <h3>Choose Hotel</h3>
-            <select>
-                <option value="A1"> Mường Thanh Hotel </option>
-                <option value="A2">Ha Noi Hotel</option>
-                <option value="A3">Five Star Hotel</option>
+            <select name = "hotel">
+                <option value="Mường Thanh Hotel" > Mường Thanh Hotel </option>
+                <option value="Ha Noi Hotel" >Ha Noi Hotel</option>
+                <option value="Five Star Hotel" >Five Star Hotel</option>
             </select>
         </div>
         <input type="submit" value="Booking Now" class="submit">
@@ -119,4 +120,6 @@
 </section>
 
 </body>
+
+
 </html>

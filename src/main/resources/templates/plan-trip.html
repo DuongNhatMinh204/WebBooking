@@ -83,18 +83,18 @@
 
 <!-- Flight Booking Information Table -->
 <div class="flight-info">
-  <h2>Thông Tin Chuyến Bay Đã Đặt</h2>
+  <h2>Thông Tin Chuyến Đi Đã Đặt</h2>
   <table>
     <thead>
     <tr>
       <th>Select</th>
       <th>Mã Chuyến Đi</th>
-      <th>Họ Tên Người Đặt</th>
+
       <th>Địa Điểm</th>
       <th>Số Người Đi</th>
       <th>Check-in Time</th>
       <th>Check-out Time</th>
-      <th>Mã Chuyến Bay</th>
+      <th>Khách Sạn</th>
       <th>Ngày Bay</th>
       <th>Tình Trạng Thanh Toán</th>
     </tr>
@@ -132,5 +132,31 @@
   document.getElementById('pay-btn').addEventListener('click', function() {
     alert('Thanh toán thành công!');
   });
+
+</script>
+<script>
+  fetch('/booking/details')
+          .then(response => response.json())
+          .then(data => {
+            const flightDate = localStorage.getItem('flightDate'); // Lấy giá trị flightDate từ localStorage
+            const tableBody = document.querySelector('tbody');
+            tableBody.innerHTML = '';
+            data.forEach(booking => {
+              const row = `
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>${booking.id}</td>
+            <td>${booking.palaceName}</td>
+            <td>${booking.numberOfPeople}</td>
+            <td>${booking.checkinTime}</td>
+            <td>${booking.checkoutTime}</td>
+            <td>${booking.hotel}</td>
+            <td>${flightDate || 'Chưa chọn ngày'}</td> <!-- Hiển thị flightDate -->
+            <td>Chưa Thanh Toán</td>
+          </tr>
+        `;
+              tableBody.innerHTML += row;
+            });
+          });
 </script>
 </html>

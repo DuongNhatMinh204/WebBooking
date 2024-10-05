@@ -47,22 +47,23 @@
 </h1>
 
 <div class="flight-selection">
-    <form action="plan-trip">
+<!--    <form action="plan-trip">-->
+    <form action="/flight/select" method="post">
         <div class="inputBox">
             <h3>Departure</h3>
-            <input type="text" placeholder="Enter departure city">
+            <input type="text" name="departure" placeholder="Enter departure city">
         </div>
 
         <div class="inputBox">
             <h3>Flight Date</h3>
-            <input type="date">
+            <input type="date" name="flightDate">
         </div>
         <div class="inputBox">
             <h3>Class</h3>
-            <select>
-                <option value="economy">Economy</option>
-                <option value="business">Business</option>
-                <option value="first-class">First Class</option>
+            <select name = "classFlight">
+                <option value="economy" >Economy</option>
+                <option value="business" >Business</option>
+                <option value="first-class" >First Class</option>
             </select>
         </div>
         <input type="submit" value="Select" class="submit" style="background-color: #51cd82">
@@ -116,4 +117,9 @@
 </section>
 
 </body>
+<script>
+    document.querySelector('input[name="flightDate"]').addEventListener('change', function () {
+        localStorage.setItem('flightDate', this.value);
+    });
+</script>
 </html>
