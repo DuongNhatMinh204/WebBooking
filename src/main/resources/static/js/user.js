@@ -104,13 +104,18 @@ document.getElementById("sign-up-form").addEventListener("submit", function(even
 
     var formData = new FormData(this);
     var password = formData.get("password");
+    var confirmPassword = formData.get("confirmPassword") ;
 
     // Kiểm tra độ dài mật khẩu trước khi gửi đến server
     if (password.length < 8) {
         alert("Mật khẩu phải có ít nhất 8 ký tự.");
         return; // Ngăn không gửi form nếu mật khẩu quá ngắn
     }
-
+    // kiem tra xem 2 mat khau co khop nhau hay khong
+    if(confirmPassword != password) {
+        alert("Mật khẩu nhập lại không khớp") ;
+        return ;
+    }
     var data = {
         name: formData.get("name"),
         email: formData.get("email"),
