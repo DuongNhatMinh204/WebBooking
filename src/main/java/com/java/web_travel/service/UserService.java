@@ -33,6 +33,6 @@ public class UserService {
         if (user.isPresent() && password.equals(user.get().getPassword())) { // So sánh mật khẩu thường
             return user.get();
         }
-        throw new RuntimeException("Invalid credentials");
+        throw new RuntimeException("Invalid ");
     }
 }
