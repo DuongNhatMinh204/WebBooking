@@ -101,22 +101,12 @@
     </thead>
     <tbody>
     <tr>
-      <td><input type="checkbox"></td>
-      <td>12345</td>
-      <td>Nguyễn Văn A</td>
-      <td>Hà Nội</td>
-      <td>4</td>
-      <td>2024-10-15</td>
-      <td>2024-10-20</td>
-      <td>VN678</td>
-      <td>2024-10-15</td>
-      <td>Chưa Thanh Toán</td>
+
     </tr>
-    <!-- Bạn có thể thêm các dòng khác tại đây -->
+
     </tbody>
   </table>
 
-  <!-- Buttons: Cancel Trip and Pay Now -->
   <div class="btn-container">
     <button class="btn cancel" id = "cancel-btn">Hủy Chuyến</button>
     <button class="btn pay" id = "pay-btn">Thanh Toán</button>
@@ -126,7 +116,22 @@
 </body>
 <script>
   document.getElementById('cancel-btn').addEventListener('click', function() {
-    alert('Hủy chuyến thành công!');
+    const selectedRow = document.querySelector('input[type="checkbox"]:checked') ;
+    if(selectedRow) {
+      const tripId = Number(selectedRow.closest('tr').querySelector('td:nth-child(2)').innerText) ;
+      console.log(tripId) ;
+      fetch(`/booking/delete/${tripId}`, {method:'Delete'})
+              .then(response => {
+                if(response.ok){
+                  alert("huy chuyen thanh cong")
+                }else{
+                  alert("Khong huy duoc " + tripId)
+                }
+              })
+    }else{
+      alert("Chon 1 chuyen di de huy")
+    }
+
   });
 
   document.getElementById('pay-btn').addEventListener('click', function() {
