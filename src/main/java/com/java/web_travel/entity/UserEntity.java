@@ -11,7 +11,7 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String telephone; // Change from username to telephone
+    private String telephone;
     private String password;
     private String email;
     private String roles;

@@ -17,4 +17,9 @@ public class AdminWebController {
         ModelAndView mav = new ModelAndView("admin_account");
         return mav ;
     }
+    @RequestMapping(value = "createStaff" , method = RequestMethod.GET)
+    public ModelAndView createStaff(){
+        ModelAndView mav = new ModelAndView("createStaff");
+        return mav ;
+    }
 }

@@ -20,63 +20,57 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-//    @PostMapping("/register")
-//    public ResponseEntity<Map<String, Object>> register(@RequestBody UserEntity user) {
-//        userService.register(user);
-//        Map<String, Object> response = new HashMap<>();
-//        response.put("success", true);
-//        response.put("message", "Registration successful");
-//        return ResponseEntity.ok(response);
-//    }
-@PostMapping("/register")
-public ResponseEntity<Map<String, Object>> register(@RequestBody UserEntity user) {
-    Map<String, Object> response = new HashMap<>();
-    try {
-        userService.register(user);
-        response.put("success", true);
-        response.put("message", "Đăng ký thành công");
-    } catch (RuntimeException e) {
-        response.put("success", false);
-        response.put("message", e.getMessage());
-    }
-    return ResponseEntity.ok(response);
-}
 
-
-    //    @PostMapping("/login")
-//    public ResponseEntity<Map<String, Object>> login(@RequestBody UserEntity user) {
-//        UserEntity authenticatedUser = userService.login(user.getTelephone(), user.getPassword());
-//        Map<String, Object> response = new HashMap<>();
-//        if (authenticatedUser != null) {
-//            response.put("success", true);
-//            response.put("message", "Login successful");
-//        } else {
-//            response.put("success", false);
-//            response.put("message", "Invalid telephone or password");
-//        }
-//        return ResponseEntity.ok(response);
-//    }
-@PostMapping("/login")
-public ResponseEntity<Map<String, Object>> login(@RequestBody UserEntity user) {
-    UserEntity authenticatedUser = userService.login(user.getTelephone(), user.getPassword());
-    Map<String, Object> response = new HashMap<>();
-
-    if (authenticatedUser != null) {
-        response.put("success", true);
-        response.put("message", "Login successful");
-
-        // Kiểm tra vai trò của người dùng
-        if ("admin".equals(authenticatedUser.getRoles())) {
-            response.put("redirectUrl", "http://localhost:8080/admin_booking");
-        } else {
-            response.put("redirectUrl", "http://localhost:8080/home");
+    @PostMapping("/register")
+    public ResponseEntity<Map<String, Object>> register(@RequestBody UserEntity user) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            userService.register(user);
+            response.put("success", true);
+            response.put("message", "Đăng ký thành công");
+        } catch (RuntimeException e) {
+            response.put("success", false);
+            response.put("message", e.getMessage());
         }
-    } else {
-        response.put("success", false);
-        response.put("message", "Invalid telephone or password");
+        return ResponseEntity.ok(response);
     }
 
-    return ResponseEntity.ok(response);
-}
+    @PostMapping("/createStaff")
+    public ResponseEntity<Map<String, Object>> createStaff(@RequestBody UserEntity user) {
+        Map<String, Object> response = new HashMap<>();
+        try {
+            userService.register(user);
+            response.put("success", true);
+            response.put("message", "Đăng ký thành công");
+        } catch (RuntimeException e) {
+            response.put("success", false);
+            response.put("message", e.getMessage());
+        }
+        return ResponseEntity.ok(response);
+    }
+
+
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, Object>> login(@RequestBody UserEntity user) {
+        UserEntity authenticatedUser = userService.login(user.getTelephone(), user.getPassword());
+        Map<String, Object> response = new HashMap<>();
+
+        if (authenticatedUser != null) {
+            response.put("success", true);
+            response.put("message", "Login successful");
+
+            // Kiểm tra vai trò của người dùng
+            if ("admin".equals(authenticatedUser.getRoles())) {
+                response.put("redirectUrl", "http://localhost:8080/admin_booking");
+            } else {
+                response.put("redirectUrl", "http://localhost:8080/home");
+            }
+        } else {
+            response.put("success", false);
+            response.put("message", "Invalid telephone or password");
+        }
+
+        return ResponseEntity.ok(response);
+    }
 
 }
